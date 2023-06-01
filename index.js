@@ -10,27 +10,26 @@ const client = new Client({
 });
 
 client.once("ready", () => {
-  console.log("Bot is ready...");
+  // console.log("Bot is ready...");
   startCountdown();
 });
 
 client.on("messageCreate", (message) => {
-  console.log(message);
+  // console.log(message);
 });
 
 async function startCountdown() {
   const targetDate = new Date("2023-06-02T01:00:00+02:00"); // June 2nd, 1 AM CEST
   const channelId = "1113604806645383178";
-  let countdownMessage;
 
   if (Date.now() >= targetDate) {
-    console.log("Countdown is already over.");
+    // console.log("Countdown is already over.");
     return;
   }
 
   const channel = client.channels.cache.get(channelId);
   if (!channel) {
-    console.log(`Channel with ID ${channelId} not found.`);
+    // console.log(`Channel with ID ${channelId} not found.`);
     return;
   }
 
@@ -40,7 +39,7 @@ async function startCountdown() {
 
     if (timeLeft <= 0) {
       clearInterval(countdownInterval);
-      console.log("Diablo IV Early Access is live now!");
+      // console.log("Diablo IV Early Access is live now!");
       return;
     }
 
@@ -49,7 +48,7 @@ async function startCountdown() {
     const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
     const seconds = Math.floor((timeLeft / 1000) % 60);
 
-    countdownMessage = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left until Early Access is live`;
+    const countdownMessage = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left until Early Access is live`;
 
     // console.log(countdownMessage);
 
@@ -68,7 +67,7 @@ async function startCountdown() {
         channel.send(countdownMessage);
       }
     } catch (error) {
-      console.error("Error fetching or editing message:", error);
+      // console.error("Error fetching or editing message:", error);
     }
   }, 1000);
 }
