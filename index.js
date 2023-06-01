@@ -51,7 +51,7 @@ async function startCountdown() {
 
     countdownMessage = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left until Early Access is live`;
 
-    console.log(countdownMessage);
+    // console.log(countdownMessage);
 
     try {
       const messages = await channel.messages.fetch({ limit: 1 });
